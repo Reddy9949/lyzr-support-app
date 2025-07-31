@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Widget-specific styles */
+#lyzr-support-widget {
+  position: fixed;
+  z-index: 9999;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+#lyzr-support-widget * {
+  box-sizing: border-box;
+} 
