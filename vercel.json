@@ -30,10 +30,5 @@
   ],
   "env": {
     "PYTHONPATH": "./server"
-  },
-  "functions": {
-    "server/main.py": {
-      "runtime": "python3.9"
-    }
   }
 }
