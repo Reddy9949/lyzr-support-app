@@ -22,6 +22,29 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) =
     )
   }
 
+  // For development: Allow access to dashboard even without authentication
+  // when Supabase is not fully configured
+  const supabaseUrl = (import.meta as any).env.VITE_SUPABASE_URL
+  const isSupabaseConfigured = supabaseUrl && supabaseUrl !== 'your-supabase-project-url'
+  
+  if (!isSupabaseConfigured) {
+    // Show development notice
+    return (
+      <div className="min-h-screen bg-gray-50">
+        <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4">
+          <div className="flex">
+            <div className="ml-3">
+              <p className="text-sm">
+                <strong>Development Mode:</strong> Supabase not configured. Update your .env file with Supabase credentials for full functionality.
+              </p>
+            </div>
+          </div>
+        </div>
+        {children}
+      </div>
+    )
+  }
+
   return user ? <>{children}</> : <Navigate to="/auth" replace />
 }
 

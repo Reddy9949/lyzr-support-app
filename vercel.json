@@ -1,0 +1,39 @@
+{
+  "version": 2,
+  "name": "lyzr-support-app",
+  "builds": [
+    {
+      "src": "client/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    },
+    {
+      "src": "server/main.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/server/main.py"
+    },
+    {
+      "src": "/widget/(.*)",
+      "dest": "/widget/dist/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/client/dist/$1"
+    }
+  ],
+  "env": {
+    "PYTHONPATH": "./server"
+  },
+  "functions": {
+    "server/main.py": {
+      "runtime": "python3.9"
+    }
+  }
+}
