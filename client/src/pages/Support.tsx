@@ -5,7 +5,7 @@ import {
   Mail, 
  
   BookOpen, 
-  HelpCircle, 
+ 
   ChevronDown, 
   ChevronUp,
   ExternalLink,

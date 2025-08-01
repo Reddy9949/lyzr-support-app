@@ -1,12 +1,12 @@
 import { createClient } from '@supabase/supabase-js'
-console.log("ENV CHECK:", import.meta.env.VITE_SUPABASE_URL);
+console.log("ENV CHECK:", (import.meta as any).env.VITE_SUPABASE_URL);
 
 // Load environment variables with fallbacks for build/development
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://placeholder.supabase.co'
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'placeholder-anon-key'
+const supabaseUrl = (import.meta as any).env.VITE_SUPABASE_URL || 'https://placeholder.supabase.co'
+const supabaseAnonKey = (import.meta as any).env.VITE_SUPABASE_ANON_KEY || 'placeholder-anon-key'
 
 // Log warning if using fallback values
-if (!import.meta.env.VITE_SUPABASE_URL || !import.meta.env.VITE_SUPABASE_ANON_KEY) {
+if (!(import.meta as any).env.VITE_SUPABASE_URL || !(import.meta as any).env.VITE_SUPABASE_ANON_KEY) {
   console.warn('⚠️ Using fallback Supabase configuration. Set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY for full functionality.')
 }
 
