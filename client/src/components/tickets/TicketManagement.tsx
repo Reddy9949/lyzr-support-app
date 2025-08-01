@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { FileText, Clock, CheckCircle, AlertCircle, MessageSquare, User } from 'lucide-react'
+import { Clock, CheckCircle, AlertCircle, FileText } from 'lucide-react'
 import { Agent } from '../../lib/supabase'
 
 interface Ticket {
@@ -42,20 +42,20 @@ const TicketManagement: React.FC<TicketManagementProps> = ({ agents }) => {
     }
   }
 
-  const updateTicketStatus = async (ticketId: string, status: string, response?: string) => {
+  const updateTicketStatus = async (ticketId: string, status: string, manualResponseText?: string) => {
     try {
-      const response = await fetch(`http://localhost:8000/api/tickets/${ticketId}`, {
+      const updateResponse = await fetch(`http://localhost:8000/api/tickets/${ticketId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           status,
-          manual_response: response,
+          manual_response: manualResponseText,
         }),
       })
 
-      if (response.ok) {
+      if (updateResponse.ok) {
         fetchTickets()
         setSelectedTicket(null)
         setManualResponse('')

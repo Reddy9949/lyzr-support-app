@@ -318,3 +318,5 @@ Thumbs.db
 .Trashes
 ehthumbs.db
 Thumbs.db 
+# Allow client lib directory for Supabase configuration
+!client/src/lib/

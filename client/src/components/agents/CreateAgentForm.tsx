@@ -69,7 +69,7 @@ const CreateAgentForm: React.FC<CreateAgentFormProps> = ({ onSuccess, onCancel }
     
     for (const file of files) {
       const fileName = `${Date.now()}-${file.name}`
-      const { data, error } = await supabase.storage
+      const { error } = await supabase.storage
         .from('knowledge-base')
         .upload(fileName, file)
       
@@ -102,7 +102,7 @@ const CreateAgentForm: React.FC<CreateAgentFormProps> = ({ onSuccess, onCancel }
       const allKnowledgeBase = [...fileUrls, ...knowledgeBase]
       
       // Create agent in database
-      const { data: agent, error } = await supabase
+      const { error } = await supabase
         .from('agents')
         .insert({
           name: data.name,

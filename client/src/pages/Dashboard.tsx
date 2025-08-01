@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Plus, Settings, Copy, ExternalLink, MessageCircle, Users, FileText, BarChart3, AlertCircle } from 'lucide-react'
+import { Plus, Copy, MessageCircle, Users, FileText, BarChart3, AlertCircle } from 'lucide-react'
 import { useAuth } from '../contexts/AuthContext'
 import { supabase, Agent } from '../lib/supabase'
 import CreateAgentForm from '../components/agents/CreateAgentForm'
@@ -12,7 +12,6 @@ const Dashboard: React.FC = () => {
   const [agents, setAgents] = useState<Agent[]>([])
   const [loading, setLoading] = useState(true)
   const [showCreateForm, setShowCreateForm] = useState(false)
-  const [selectedAgent, setSelectedAgent] = useState<Agent | null>(null)
   const [activeTab, setActiveTab] = useState<'agents' | 'analytics' | 'tickets'>('agents')
 
   useEffect(() => {
@@ -307,13 +306,6 @@ const Dashboard: React.FC = () => {
                                 >
                                   <Copy className="h-4 w-4 mr-1" />
                                   Copy Code
-                                </button>
-                                <button
-                                  onClick={() => setSelectedAgent(agent)}
-                                  className="flex-1 inline-flex items-center justify-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
-                                >
-                                  <Settings className="h-4 w-4 mr-1" />
-                                  Settings
                                 </button>
                               </div>
                             </div>

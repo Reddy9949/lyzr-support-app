@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { BarChart3, TrendingUp, Users, MessageCircle, FileText, Activity } from 'lucide-react'
+import { BarChart3, TrendingUp, MessageCircle, FileText, Activity } from 'lucide-react'
 import { Agent } from '../../lib/supabase'
 
 interface AnalyticsData {
